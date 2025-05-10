@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  describe '#total_price'do
+  describe '#total_price' do
     let(:params) do
       {
         order_products_attributes: [
@@ -23,26 +25,26 @@ RSpec.describe Order, type: :model do
 
     context '消費税に端数が出た場合' do
       before do
-        create(:product, id:99, price: 299)
+        create(:product, id: 99, price: 299)
       end
-      
+
       let(:params) do
         {
           order_products_attributes: [
             {
               product_id: 99,
               quantity: 1
-            },
+            }
           ]
         }
       end
 
-    # お値段 299 消費税 29.9 切り上げ = 30
-    it { is_expected.to eq 329 }
+      # お値段 299 消費税 29.9 切り上げ = 30
+      it { is_expected.to eq 329 }
+    end
   end
-end
 
-describe '#valid?' do
+  describe '#valid?' do
     let(:name) { 'サンプルマン' }
     let(:email) { 'test@example.com' }
     let(:telephone) { '0312345678' }
@@ -64,8 +66,8 @@ describe '#valid?' do
 
     subject { Order.new(params).valid? }
 
-    it { is_expected.to eq true}
-    
+    it { is_expected.to eq true }
+
     context '名前が空白の場合' do
       let(:name) { '' }
 
@@ -149,6 +151,5 @@ describe '#valid?' do
 
       it { is_expected.to eq false }
     end
-
   end
 end
