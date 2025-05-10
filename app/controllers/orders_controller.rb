@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   def new
     @order = Order.new
@@ -7,13 +9,13 @@ class OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     if params.key?(:add_product)
-       @order.order_products << OrderProduct.new
-       return render :new
+      @order.order_products << OrderProduct.new
+      return render :new
     end
     if params.key?(:delete_product)
       filter_order_products
       return render :new
-   end
+    end
 
     return render :new if @order.invalid?
   end
@@ -22,15 +24,15 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     return render :new if params[:button] == 'back'
 
-    if  @order.save
+    if @order.save
       # OrderMailerJob.perform_later(@order.id)
       OrderMailer.mail_to_user(@order.id).deliver_later
       session[:order_id] = @order.id
-      return redirect_to complete_orders_url 
+      return redirect_to complete_orders_url
     end
 
-  render :confirm
-end
+    render :confirm
+  end
 
   def complete
     @order = Order.find_by(id: session[:order_id])
@@ -42,7 +44,7 @@ end
   private
 
   def order_params
-      params
+    params
       .require(:order)
       .permit(:name,
               :email,
