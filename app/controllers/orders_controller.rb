@@ -63,3 +63,20 @@ class OrdersController < ApplicationController
                                   .with_index { |_, index| index == params[:delete_product].to_i }
   end
 end
+
+
+def index
+  @orders = Order.includes(:payment_method, :order_products, :inflow_sources).order(created_at: :desc)
+  @orders = Order.order(created_at: :desc).limit(100)
+  def index
+  end
+end
+
+def show
+end
+
+private
+
+def set_order
+  @order = Order.includes(:payment_method, :order_products, :inflow_sources).find(params[:id])
+end

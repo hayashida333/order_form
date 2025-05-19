@@ -1,0 +1,41 @@
+<h1>注文履歴一覧</h1>
+<p>全注文数: <%= @order_histories.size %> 件</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>注文ID</th>
+      <th>ユーザー名</th>
+      <th>注文日</th>
+      <th>合計金額</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_histories.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.name %></td>
+        <td><%= order.price %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th, tbody td {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #dddddd;
+  }
+
+  thead th {
+    background-color: #f9f9f9;
+  }
+</style>
