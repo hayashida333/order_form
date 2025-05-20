@@ -5,10 +5,8 @@
   <thead>
     <tr>
       <th>注文ID</th>
-      <th>ユーザー名</th>
-      <th>注文日</th>
-      <th>合計金額</th>
-      <th>操作</th>
+      <th>購入者</th>
+      <th>注文商品</th>
     </tr>
   </thead>
   <tbody>
@@ -16,8 +14,7 @@
       <tr>
         <td><%= order.id %></td>
         <td><%= order.name %></td>
-        <td><%= order.price %></td>
-        
+        <td><%= order.price %></td>  
       </tr>
     <% end %>
   </tbody>
