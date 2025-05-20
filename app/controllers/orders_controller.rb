@@ -67,7 +67,6 @@ end
 def index
   @orders = Order.includes(:payment_method, :order_products, :inflow_sources).order(created_at: :desc)
   @orders = Order.order(created_at: :desc).limit(100)
-  def index; end
 end
 
 def show; end
