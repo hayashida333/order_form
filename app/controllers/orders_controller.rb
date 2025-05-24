@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   def new
     @order = Order.new
     @order.order_products.build
@@ -59,5 +60,10 @@ end
     @order.order_products = @order.order_products
                                   .reject
                                   .with_index { |_, index| index == params[:delete_product].to_i }
+  end
+
+
+  def index
+    @orders = Order.all.order(created_at: :desc)
   end
 end
