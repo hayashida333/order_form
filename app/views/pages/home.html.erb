@@ -1,0 +1,16 @@
+<!-- app/views/pages/home.html.erb -->
+
+<!-- ヘッダー -->
+<header style="background-color: #20c997; padding: 1rem; color: white;">
+  <h1 style="margin: 0;">くだもの屋さん</h1>
+</header>
+
+<!-- メインコンテンツ -->
+<main style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; text-align: center;">
+
+  <div class="mt-4">
+  <div class="mt-4 d-flex gap-3">
+  <%= link_to 'くだもの屋さんへ行く', new_order_path, class: 'btn btn-primary btn-lg' %>
+  <%= link_to '注文履歴を見る', orders_path, class: 'btn btn-secondary btn-lg' %>
+</div>
+</main>

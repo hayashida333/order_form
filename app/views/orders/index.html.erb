@@ -1,0 +1,35 @@
+<h1>注文履歴</h1>
+<p>支払い方法 1 銀行振込 2 クレジットカード</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>電話番号</th>
+      <th>配送先住所</th>
+      <th>支払方法</th>
+      <th>その他のコメント</th>
+      <th>DM希望</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.name %></td>
+        <td><%= order.email %></td>
+        <td><%= order.telephone %></td>
+        <td><%= order.delivery_address %></td>
+        <td><%= order.payment_method_id %></td>
+        <td><%= order.other_comment %></td>
+        <td><%= order.direct_mail_enabled ? '希望する' : '希望しない' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="text-center mt-4">
+  <%= link_to 'トップページに戻る', root_path, class: 'btn btn-secondary' %>
+</div>
