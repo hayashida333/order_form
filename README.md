@@ -16,7 +16,3 @@ http://localhost:3000/
 
 
 
-
-
-Uploading kudamonoyasan.mp4…
-
