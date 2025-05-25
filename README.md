@@ -14,5 +14,9 @@ bin/rails db:migrate
 以下をブラウザで開くことができます
 http://localhost:3000/
 
+
+
+
+
 Uploading kudamonoyasan.mp4…
 
