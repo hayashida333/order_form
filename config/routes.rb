@@ -3,8 +3,16 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
+  root 'pages#home'
+  resources :orders, only: [:index]
+  
+  get 'pages/home'
+  resources :orders, only: %i[new create] do 
+
   root 'top#index'
   resources :orders, only: %i[new create] do
+
     collection do
       post :confirm
       get :complete

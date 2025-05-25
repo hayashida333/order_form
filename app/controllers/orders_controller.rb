@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+
+  def index
+    @orders = Order.all.order(created_at: :desc)
+  end
+
   def new
     @order = Order.new
     @order.order_products.build
@@ -12,6 +17,7 @@ class OrdersController < ApplicationController
       @order.order_products << OrderProduct.new
       return render :new
     end
+
     if params.key?(:delete_product)
       filter_order_products
       return render :new
@@ -25,7 +31,6 @@ class OrdersController < ApplicationController
     return render :new if params[:button] == 'back'
 
     if @order.save
-      # OrderMailerJob.perform_later(@order.id)
       OrderMailer.mail_to_user(@order.id).deliver_later
       session[:order_id] = @order.id
       return redirect_to complete_orders_url
@@ -62,6 +67,10 @@ class OrdersController < ApplicationController
                                   .reject
                                   .with_index { |_, index| index == params[:delete_product].to_i }
   end
+
+
+end # ← ここでクラスを閉じる
+=======
 end
 
 def index
@@ -76,3 +85,4 @@ private
 def set_order
   @order = Order.includes(:payment_method, :order_products, :inflow_sources).find(params[:id])
 end
+
