@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe OrderMailer, type: :mailer do
@@ -7,23 +9,23 @@ RSpec.describe OrderMailer, type: :mailer do
     サンプルマン様
 
     この度はご注文いただき、誠にありがとうございます。
-    
+
     以下の注文内容に基づき、商品を発送させていただきます。
     到着まで今しばらくお待ちください。
-    
+
     [注文内容]
     商品:おいしいバナナ(100円/個)
     数量:3
     商品:たのしいオレンジ(200円/個)
     数量:2
     合計金額: 770円(税込)
-    
+
     支払い方法:クレジットカード
     お届け先住所:東京都葛飾区亀有公園前
     電話番号:0312345678
     その他・ご要望:テスト投稿です
     メールマガジンの配信:配信を希望する
-    
+
     ------------------------------------
     楽しい果物ファーム
     https://fruit.example.com
@@ -80,10 +82,10 @@ RSpec.describe OrderMailer, type: :mailer do
 
     before do
       create(:order, id: order_id,
-                      order_products_attributes: [
-                        attributes_for(:order_product, product_id: 1, quantity: 3),
-                        attributes_for(:order_product, product_id: 2, quantity: 2),
-                      ])
+                     order_products_attributes: [
+                       attributes_for(:order_product, product_id: 1, quantity: 3),
+                       attributes_for(:order_product, product_id: 2, quantity: 2)
+                     ])
     end
 
     it '正しいフォーマットでメールが作成される' do

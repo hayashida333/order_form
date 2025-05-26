@@ -1,0 +1,27 @@
+<div class='container mt-3 mb-5'>
+  <h1 class='text-center mb-5'>注文詳細</h1>
+
+  <div class="col-md-6 mx-auto mb-5">
+    <div class="mb-3"><strong>注文者:</strong> <%= @order.name %></div>
+    <div class="mb-3"><strong>メール:</strong> <%= @order.email %></div>
+    <div class="mb-3"><strong>電話番号:</strong> <%= @order.telephone %></div>
+    <div class="mb-3"><strong>配送先:</strong> <%= @order.delivery_address %></div>
+    <div class="mb-3"><strong>支払い方法:</strong> <%= @order.payment_method.name %></div>
+    <div class="mb-3">
+      <strong>注文商品:</strong>
+      <% @order.order_products.each do |order_product| %>
+        <div class="border p-2 my-2">
+          <%= order_product.name_and_price_text %> × <%= order_product.quantity %>
+        </div>
+      <% end %>
+      <div class="fw-bold mt-2">合計: <%= number_to_currency(@order.total_price) %></div>
+    </div>
+    <div class="mb-3"><strong>その他コメント:</strong> <%= @order.other_comment.presence || '（なし）' %></div>
+    <div class="mb-3"><strong>メール配信:</strong> <%= @order.direct_mail_enabled_text %></div>
+    <div class="mb-3"><strong>流入元:</strong> <%= @order.inflow_sources.map(&:name).join(', ') %></div>
+  </div>
+
+  <div class="text-center">
+    <%= link_to '一覧に戻る', orders_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
