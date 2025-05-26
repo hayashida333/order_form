@@ -7,6 +7,7 @@
 ```
 docker compose up -d
 docker exec -it order_form-app-1 /bin/bash
+bin/rails db:seed
 bin/rails db:migrate
 ```
 
