@@ -1,9 +1,8 @@
-# frozen_string_literal: true
-
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:show]
 
   def index
-    @orders = Order.all.order(created_at: :desc)
+    @orders = Order.includes(:payment_method, :order_products, :inflow_sources).order(created_at: :desc).limit(100)
   end
 
   def new
@@ -46,6 +45,10 @@ class OrdersController < ApplicationController
     session[:order_id] = nil
   end
 
+  def show
+  
+  end
+
   private
 
   def order_params
@@ -68,21 +71,7 @@ class OrdersController < ApplicationController
                                   .with_index { |_, index| index == params[:delete_product].to_i }
   end
 
-
-end # ← ここでクラスを閉じる
-=======
+  def set_order
+    @order = Order.includes(:payment_method, :order_products, :inflow_sources).find(params[:id])
+  end
 end
-
-def index
-  @orders = Order.includes(:payment_method, :order_products, :inflow_sources).order(created_at: :desc)
-  @orders = Order.order(created_at: :desc).limit(100)
-end
-
-def show; end
-
-private
-
-def set_order
-  @order = Order.includes(:payment_method, :order_products, :inflow_sources).find(params[:id])
-end
-

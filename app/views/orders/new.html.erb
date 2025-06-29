@@ -65,7 +65,7 @@
         <%= f.label :other_comment, class: 'form-label border-start border-primary border-4 ps-1' %>
         <%= f.text_area :other_comment, size: '60x6', placeholder: 'その他、ご要望がありましたらご入力ください。', class: 'form-control' %>
         <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :other_comment } %>
-      </div>  
+      </div>
 
       <div class="mb-3">
         <%= f.label :direct_mail_enabled, class: 'form-label border-start border-primary border-4 ps-1' %>
@@ -96,19 +96,9 @@
       </div>
     </div>
 
-
-
-
-    
-  <div class='col-md-6 mx-auto d-flex justify-content-between gap-3'>
+    <div class='col-md-6 mx-auto d-flex justify-content-between gap-3'>
       <%= f.submit '確認画面へ', class: 'btn btn-lg btn-primary w-50' %>
       <%= link_to 'トップページに戻る', root_path, class: 'btn btn-lg btn-outline-secondary w-50' %>
     </div>
   <% end %>
-
-    <div class='d-grid col-md-6 mx-auto'>
-      <%= f.submit '確認画面へ', class: 'btn btn-lg btn-primary' %> 
-    </div>
-  <% end %>
 </div>
-
