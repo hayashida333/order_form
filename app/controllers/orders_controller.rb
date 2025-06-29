@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
@@ -45,9 +47,7 @@ class OrdersController < ApplicationController
     session[:order_id] = nil
   end
 
-  def show
-  
-  end
+  def show; end
 
   private
 

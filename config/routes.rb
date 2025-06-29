@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :goods, only: [:new, :create]
+  resources :goods, only: %i[new create]
   resources :order_histories, only: %i[index]
 
   mount Sidekiq::Web, at: '/sidekiq'
