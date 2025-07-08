@@ -4,8 +4,13 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
   def index
-    @orders = Order.includes(:payment_method, :order_products, :inflow_sources).order(created_at: :desc).limit(100)
-  end
+  @orders = Order.includes(:payment_method, :order_products, :inflow_sources)
+               .order(created_at: :desc)
+               .page(params[:page])
+               .per(2)
+
+end
+
 
   def new
     @order = Order.new

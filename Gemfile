@@ -98,3 +98,4 @@ group :test do
   gem 'rspec-rails'
   # 以下、コースで追加したgem ここまで
 end
+gem 'kaminari'
